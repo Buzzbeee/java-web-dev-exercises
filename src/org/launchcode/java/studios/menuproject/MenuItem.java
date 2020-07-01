@@ -1,5 +1,7 @@
 package org.launchcode.java.studios.menuproject;
 
+import java.util.Objects;
+
 public class MenuItem {
     private String name;
     private String description;
@@ -18,6 +20,33 @@ public class MenuItem {
     public String getName() {
         return name;
     }
+
+    @Override
+    public String toString() {
+        return "MenuItem{" +
+                "name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                ", category='" + category + '\'' +
+                ", isNew=" + isNew +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MenuItem menuItem = (MenuItem) o;
+        return Double.compare(menuItem.price, price) == 0 &&
+                isNew == menuItem.isNew &&
+                Objects.equals(name, menuItem.name) &&
+                Objects.equals(description, menuItem.description) &&
+                Objects.equals(category, menuItem.category);
+    }
+
+//    public boolean equals(MenuItem item) {
+//        return
+//    }
 
     public void setName(String name) {
         this.name = name;
